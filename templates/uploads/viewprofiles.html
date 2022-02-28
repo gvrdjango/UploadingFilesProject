@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{%block title%} Profiles {%endblock%}
+
+{%block content%}
+    {%if resumes%}
+    <table align='center' border='1' cellpadding='7'>
+      <tr>
+        <th colspan='5' align='center'>Profiles Info</th>
+      </tr>
+      <tr>
+        <th>Profile Id</th>
+        <th>Ful Name</th>
+        <th>Technologies Known</th>
+        <th>Email Id</th>
+        <th>Profile Photo</th>
+      </tr>
+      {%for r in resumes%}
+      <tr>
+        <td>{{r.id}}</td>
+        <td>{{r.fname}} {{r.lname}}</td>
+        <td>{{ r.tech }}</td>
+        <td>{{ r.email }}</td>
+        <td><img src="{{ r.photo.url }}" height="150" width="120"/></td>
+      </tr>
+      {%endfor%}
+    </table>
+    {%else%}
+      <h3 align='center'> Profiles Not Found</h3>
+    {%endif%}
+
+  {% endblock %}

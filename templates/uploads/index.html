@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block title%} Upload Profiles {%endblock%}
+
+{%block content%}
+    <h2 align='center'>Upload User Profile</h2>
+    <form class="" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+      <table align='center' cellpadding='6'>
+        {{form.as_table}}
+        <tr>
+          <td align='center'> <button type="submit" name="b1">Upload</button></td>
+        </tr>
+      </table>
+    </form>
+
+    {% if obj %}
+      <h3 align='center'>Succesfully uploaded to {{obj.photo.url}}</h3>
+      <table align='center' border="1" cellspacing='0'>
+        <tr>
+          <td> {{obj.fname}} {{obj.lname}}</td>
+          <td>{{obj.tech}}</td>
+          <td>{{obj.email}}</td>
+          <td> <img src="{{obj.photo.url}}" alt="image" "height=100" width="80"> </td>
+        </tr>
+      </table>
+
+    {% endif %}
+
+  {% endblock %}
